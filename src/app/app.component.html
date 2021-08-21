@@ -1,0 +1,21 @@
+<div fxLayout="column" fxLayoutAlign="space-around stretch">
+  <mat-toolbar color="primary">
+    <span fxFlexOffset="15">
+      <a mat-raised-button href="https://www.google.com/" target="_blank">
+        <mat-icon>info</mat-icon> Report an issue
+        <!-- <app-file-input
+        *ngIf="!showFirstUpload"
+        (fileUploaded)="onFileUploaded($event)"
+      ></app-file-input> -->
+      </a>
+    </span>
+  </mat-toolbar>
+
+  <app-file-input
+    *ngIf="showFirstUpload"
+    fxFlexOffset="10"
+    (fileUploaded)="onFileUploaded($event)"
+  ></app-file-input>
+
+  <app-preview [data]="data" [columnHeaders]="columnHeaders"></app-preview>
+</div>

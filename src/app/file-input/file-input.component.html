@@ -1,0 +1,13 @@
+<div fxLayout="column" fxLayoutAlign="space-around center">
+  <div style="font-size: 50px; padding: .5rem;">Drop file</div>
+    <button mat-raised-button color="primary" (click)="fileInput.click()">
+      <input
+        #fileInput
+        type="file"
+        (change)="onFileInput($event)"
+        style="display: none"
+        accept=".csv"   
+      />
+      Or choose&nbsp;<mat-icon>folder_open</mat-icon>
+    </button>
+</div>
