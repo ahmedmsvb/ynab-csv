@@ -1,4 +1,7 @@
+import { LocalStorageService } from './../shared/local-storage.service';
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { NgxFileDropEntry, FileSystemFileEntry } from 'ngx-file-drop';
 
 @Component({
   selector: 'app-file-input',
@@ -8,11 +11,8 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 export class FileInputComponent implements OnInit {
 
   @Output() fileUploaded = new EventEmitter<File>();
-
-  constructor() { }
-
-  ngOnInit(): void {
-  }
+  acceptableExtension: string = ".csv";
+  noHeaderRow: boolean;
 
   onFileInput(event: any) {
     let file: File = event.target.files[0]
@@ -20,5 +20,29 @@ export class FileInputComponent implements OnInit {
     if (file && file.size > 0) {
       this.fileUploaded.emit(file);
     }
+  }
+
+  dropped(files: NgxFileDropEntry[]) {
+    (files[0].fileEntry as FileSystemFileEntry).file((file: File) => {
+      if (this.hasValidExtension(file) && file.size > 0) {
+        this.fileUploaded.emit(file);
+      }
+    })
+  }
+
+  hasValidExtension(file: File) {
+    return file.name.toLowerCase().endsWith(this.acceptableExtension);
+  }
+
+
+  constructor(private localStorageService: LocalStorageService) {
+    this.noHeaderRow = this.localStorageService.get('noHeaderRow');
+  }
+
+  setNoHeaderRow(value: boolean) {
+    this.localStorageService.set('noHeaderRow', value);
+  }
+
+  ngOnInit(): void {
   }
 }

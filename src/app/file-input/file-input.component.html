@@ -1,4 +1,4 @@
-<div fxLayout="column" fxLayoutAlign="space-around center">
+<!-- <div fxLayout="column" fxLayoutAlign="space-around center">
   <div style="font-size: 50px; padding: .5rem;">Drop file</div>
     <button mat-raised-button color="primary" (click)="fileInput.click()">
       <input
@@ -10,4 +10,32 @@
       />
       Or choose&nbsp;<mat-icon>folder_open</mat-icon>
     </button>
+</div> -->
+
+<div>
+  <ngx-file-drop dropZoneLabel="Drop files here" (onFileDrop)="dropped($event)"
+  [multiple]="false"
+  [directory]="false"
+  accept=".csv"   
+  >
+    <ng-template
+      ngx-file-drop-content-tmp
+      let-openFileSelector="openFileSelector"
+    >
+      Drag CSV file here. &nbsp;
+      <button
+        fxLayout="row"
+        type="button"
+        mat-raised-button
+        color="primary"
+        (click)="openFileSelector()"
+      >
+        Or choose&nbsp;<mat-icon>folder_open</mat-icon>
+      </button>
+    </ng-template>
+  </ngx-file-drop>
 </div>
+<section >
+  <h4>Convert options:</h4>
+  <p><mat-checkbox color="primary" [checked]="noHeaderRow" (change)="setNoHeaderRow($event.checked)">No Header Row</mat-checkbox></p>
+</section>

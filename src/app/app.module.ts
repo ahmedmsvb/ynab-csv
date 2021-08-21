@@ -10,6 +10,9 @@ import { MatIconModule } from '@angular/material/icon';
 import { FileInputComponent } from './file-input/file-input.component';
 import { MatTableModule } from '@angular/material/table';
 import { PreviewComponent } from './preview/preview.component';
+import { NgxFileDropModule } from 'ngx-file-drop';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -24,7 +27,10 @@ import { PreviewComponent } from './preview/preview.component';
     MatToolbarModule,
     MatButtonModule,
     MatIconModule,
-    MatTableModule
+    MatTableModule,
+    NgxFileDropModule,
+    MatCheckboxModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

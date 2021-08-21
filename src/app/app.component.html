@@ -1,21 +1,35 @@
-<div fxLayout="column" fxLayoutAlign="space-around stretch">
+<div fxLayout="column">
   <mat-toolbar color="primary">
-    <span fxFlexOffset="15">
-      <a mat-raised-button href="https://www.google.com/" target="_blank">
-        <mat-icon>info</mat-icon> Report an issue
-        <!-- <app-file-input
+    <a mat-flat-button color="primary" href="/">
+      {{ title }} - (Under Construction...)</a
+    >
+    <span class="example-spacer"></span>
+    <a
+      type="button"
+      mat-stroked-button
+      href="https://github.com/ahmedmsvb/ynab-csv/issues/new"
+      target="_blank"
+    >
+      Report an issue
+      <mat-icon>info</mat-icon>
+    </a>
+    <!-- <app-file-input
         *ngIf="!showFirstUpload"
         (fileUploaded)="onFileUploaded($event)"
       ></app-file-input> -->
-      </a>
-    </span>
   </mat-toolbar>
 
-  <app-file-input
-    *ngIf="showFirstUpload"
-    fxFlexOffset="10"
-    (fileUploaded)="onFileUploaded($event)"
-  ></app-file-input>
+  <div fxFlexOffset="5" class="screen-margins" *ngIf="showFirstUpload">
+    <app-file-input (fileUploaded)="onFileUploaded($event)"></app-file-input>
+  </div>
 
-  <app-preview [data]="data" [columnHeaders]="columnHeaders"></app-preview>
+  <app-preview
+    fxLayout="column"
+    fxFlexOffset="3"
+    class="screen-margins"
+    fxLayoutAlign="center stretch"
+    *ngIf="!showFirstUpload"
+    [data]="data"
+    [columnHeaders]="columnHeaders"
+  ></app-preview>
 </div>
