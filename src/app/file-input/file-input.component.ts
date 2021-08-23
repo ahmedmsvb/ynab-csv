@@ -36,11 +36,11 @@ export class FileInputComponent implements OnInit {
 
 
   constructor(private localStorageService: LocalStorageService) {
-    this.noHeaderRow = this.localStorageService.get('noHeaderRow');
+    this.noHeaderRow = this.localStorageService.getNoHeaderOption();
   }
 
   setNoHeaderRow(value: boolean) {
-    this.localStorageService.set('noHeaderRow', value);
+    this.localStorageService.setNoHeaderOption(value);
   }
 
   ngOnInit(): void {

@@ -1,7 +1,9 @@
 .example-spacer {
-    flex: 1 1 auto;
-  }
+  flex: 1 1 auto;
+}
 
-.screen-margins {
-    margin: auto 7%;
+@media all and (min-width: 700px) {
+  .screen-margins {
+    margin: auto 15%;
+  }
 }

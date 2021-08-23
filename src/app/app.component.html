@@ -1,5 +1,5 @@
 <div fxLayout="column">
-  <mat-toolbar color="primary">
+  <mat-toolbar color="primary" >
     <a mat-flat-button color="primary" href="/">
       {{ title }} - (Under Construction...)</a
     >
@@ -22,6 +22,17 @@
   <div fxFlexOffset="5" class="screen-margins" *ngIf="showFirstUpload">
     <app-file-input (fileUploaded)="onFileUploaded($event)"></app-file-input>
   </div>
+
+  <app-data-mapping
+    fxLayout="column"
+    fxFlexOffset="3"
+    class="screen-margins"
+    fxLayoutAlign="center stretch"
+    *ngIf="!showFirstUpload"
+    [ynabHeaders]="getYnabColumnHeaders()"
+    [data]="data"
+    [columnHeaders]="columnHeaders"
+  ></app-data-mapping>
 
   <app-preview
     fxLayout="column"

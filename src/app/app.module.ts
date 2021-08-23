@@ -13,12 +13,17 @@ import { PreviewComponent } from './preview/preview.component';
 import { NgxFileDropModule } from 'ngx-file-drop';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { ReactiveFormsModule } from '@angular/forms';
+import { MatCardModule } from '@angular/material/card';
+import { DataMappingComponent } from './data-mapping/data-mapping.component';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSelectModule } from '@angular/material/select';
 
 @NgModule({
   declarations: [
     AppComponent,
     FileInputComponent,
-    PreviewComponent
+    PreviewComponent,
+    DataMappingComponent
   ],
   imports: [
     BrowserModule,
@@ -30,7 +35,10 @@ import { ReactiveFormsModule } from '@angular/forms';
     MatTableModule,
     NgxFileDropModule,
     MatCheckboxModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatCardModule,
+    MatFormFieldModule,
+    MatSelectModule
   ],
   providers: [],
   bootstrap: [AppComponent]
