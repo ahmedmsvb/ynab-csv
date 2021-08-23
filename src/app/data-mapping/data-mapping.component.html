@@ -1,4 +1,15 @@
-<mat-card class="example-card" class="mat-elevation-z3">
+<div fxLayout="column" >
+  <div fxLayout="column" fxLayoutAlign="center end">
+    <button
+      type="button"
+      mat-raised-button
+      color="primary"
+      (click)="exportToYnab()"
+    >
+      Save YNAB Data
+    </button>
+  </div>
+<mat-card fxFlexOffset="3" class="example-card" class="mat-elevation-z3">
   <mat-card-header>
     <mat-card-title>YNAB Data</mat-card-title>
     <mat-card-subtitle>First 10 rows</mat-card-subtitle>
@@ -15,7 +26,7 @@
           <mat-form-field appearance="fill" id="{{ ynabColumn }}" style="margin: auto 3px;" fxLayout="column" fxLayoutAlign="center stretch">
             <mat-label>Choose Option</mat-label>
             <mat-select
-            (valueChange)="mapYnabCol(ynabColumn, $event)"
+            (valueChange)="onYnabColMapped(ynabColumn, $event)"
               [value]="getColumnName(ynabColumn)"
             >
               <mat-option value="">Choose Option</mat-option>
@@ -35,3 +46,4 @@
     </table>
   </mat-card-content>
 </mat-card>
+</div>

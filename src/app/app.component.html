@@ -1,7 +1,7 @@
 <div fxLayout="column">
-  <mat-toolbar color="primary" >
+  <mat-toolbar color="primary" class="sticky-toolbar mat-elevation-z3">
     <a mat-flat-button color="primary" href=".">
-      {{ title }} - (Under Construction...)</a
+      {{ title }}</a
     >
     <span class="example-spacer"></span>
     <a
@@ -13,34 +13,15 @@
       Report an issue
       <mat-icon>info</mat-icon>
     </a>
-    <!-- <app-file-input
-        *ngIf="!showFirstUpload"
-        (fileUploaded)="onFileUploaded($event)"
-      ></app-file-input> -->
   </mat-toolbar>
 
-  <div fxFlexOffset="5" class="screen-margins" *ngIf="showFirstUpload">
-    <app-file-input (fileUploaded)="onFileUploaded($event)"></app-file-input>
+  <div fxFlexOffset="5" class="screen-margins">
+    <div class="screen-margins" *ngIf="showFirstUpload">
+      <app-file-input (fileUploaded)="onFileUploaded($event)"></app-file-input>
+    </div>
+
+    <div *ngIf="!showFirstUpload">
+      <app-preview [data]="data" [columnHeaders]="columnHeaders"></app-preview>
+    </div>
   </div>
-
-  <app-data-mapping
-    fxLayout="column"
-    fxFlexOffset="3"
-    class="screen-margins"
-    fxLayoutAlign="center stretch"
-    *ngIf="!showFirstUpload"
-    [ynabHeaders]="getYnabColumnHeaders()"
-    [data]="data"
-    [columnHeaders]="columnHeaders"
-  ></app-data-mapping>
-
-  <app-preview
-    fxLayout="column"
-    fxFlexOffset="3"
-    class="screen-margins"
-    fxLayoutAlign="center stretch"
-    *ngIf="!showFirstUpload"
-    [data]="data"
-    [columnHeaders]="columnHeaders"
-  ></app-preview>
 </div>

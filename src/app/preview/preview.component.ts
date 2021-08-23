@@ -1,3 +1,4 @@
+import { LocalStorageService } from './../shared/local-storage.service';
 import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
@@ -8,10 +9,17 @@ import { Component, Input, OnInit } from '@angular/core';
 export class PreviewComponent implements OnInit {
   @Input() data: {}[] = [];
   @Input() columnHeaders: string[] = [];
-  
-  constructor() { }
+
+  constructor(private localStorageService: LocalStorageService) { }
 
   ngOnInit(): void {
   }
 
+  getYnabColumnHeaders(): string[] {
+    return this.localStorageService.getYnabColumnHeaders();
+  }
+
+  mapYnabCol(newMapping: {}) {
+    this.localStorageService.setMapping(newMapping);
+  }
 }

@@ -1,5 +1,6 @@
 import { LocalStorageService } from './../shared/local-storage.service';
-import { ChangeDetectorRef, Component, Input, OnInit } from '@angular/core';
+import { MappingService } from './../shared/mapping.service';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-data-mapping',
@@ -13,25 +14,24 @@ export class DataMappingComponent implements OnInit {
 
   mapping: any = {};
 
-  mapYnabCol(ynabColumn: string, column: string) {
-    if (column === '') {
-      delete this.mapping[ynabColumn];
-    } else {
-      this.mapping[ynabColumn] = column;
-    }
-    this.localStorageService.setMapping(this.mapping);
-  }
-
   getColumnName(ynabColumn: string): string {
-    return this.mapping[ynabColumn];
+    return this.mappingService.getColumnName(this.mapping, ynabColumn);
   }
 
-  constructor(private localStorageService: LocalStorageService) {  }
+  onYnabColMapped(ynabColumn: string, column: string) {
+    this.mappingService.mapYnabColumn(this.mapping, ynabColumn, column);
+  }
+
+  exportToYnab(){
+    this.mappingService.exportToYnab(this.data,this.mapping)
+  }
+
+  constructor(private mappingService: MappingService, private localStorageService: LocalStorageService) { }
 
   ngOnInit(): void {
-    setTimeout(()=> {
+    setTimeout(() => {
       this.mapping = this.localStorageService.getMapping()
-    }, 0)
+    }, 0);
   }
 
 }

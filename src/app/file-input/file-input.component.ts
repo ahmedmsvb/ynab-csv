@@ -13,6 +13,7 @@ export class FileInputComponent implements OnInit {
   @Output() fileUploaded = new EventEmitter<File>();
   acceptableExtension: string = ".csv";
   noHeaderRow: boolean;
+  formatDates: boolean;
 
   onFileInput(event: any) {
     let file: File = event.target.files[0]
@@ -37,10 +38,15 @@ export class FileInputComponent implements OnInit {
 
   constructor(private localStorageService: LocalStorageService) {
     this.noHeaderRow = this.localStorageService.getNoHeaderOption();
+    this.formatDates = this.localStorageService.getFormatDatesOption();
   }
 
   setNoHeaderRow(value: boolean) {
     this.localStorageService.setNoHeaderOption(value);
+  }
+
+  setFormatDates(value: boolean) {
+    this.localStorageService.setFormatDatesOption(value);
   }
 
   ngOnInit(): void {

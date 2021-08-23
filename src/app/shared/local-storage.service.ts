@@ -9,6 +9,7 @@ export class LocalStorageService {
   private KEY_YNAB_HEADERS = "YNAB_HEADERS"
   private KEY_NO_HEADERS_OPTION = "YNAB_NO_HEADER_OPTION"
   private KEY_MAPPING = "YNAP_MAPPING"
+  private KEY_FORMAT_DATES = "YNAB_FORMAT_DATES"
 
   ynabColsUseAmount = ["Date", "Payee", "Memo", "Amount"]
   ynabColsUseOutflowInflow = ["Date", "Payee", "Memo", "Outflow", "Inflow"]
@@ -24,6 +25,10 @@ export class LocalStorageService {
 
     if (this.getYnabColumnHeaders() === null) {
       this.setYnabColumnHeaders(this.ynabColsUseAmount);
+    }
+
+    if(this.get(this.KEY_FORMAT_DATES) === null) {
+      this.setFormatDatesOption(false);
     }
   }
 
@@ -73,6 +78,14 @@ export class LocalStorageService {
 
   setMapping(value: {}): boolean {
     return this.set(this.KEY_MAPPING, value);
+  }
+
+  getFormatDatesOption() : boolean {
+    return this.get(this.KEY_FORMAT_DATES);
+  }
+
+  setFormatDatesOption(value: boolean) : boolean {
+    return this.set(this.KEY_FORMAT_DATES, value);
   }
 
   get isLocalStorageSupported(): boolean {

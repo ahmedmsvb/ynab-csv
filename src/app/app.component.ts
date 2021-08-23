@@ -52,8 +52,4 @@ export class AppComponent {
     this.data = data;
     this.columnHeaders = headers;
   }
-
-  getYnabColumnHeaders(): string[] {
-    return this.localStorageService.getYnabColumnHeaders();
-  }
 }

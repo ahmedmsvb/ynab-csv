@@ -17,13 +17,15 @@ import { MatCardModule } from '@angular/material/card';
 import { DataMappingComponent } from './data-mapping/data-mapping.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
+import { DataPreviewComponent } from './data-preview/data-preview.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     FileInputComponent,
     PreviewComponent,
-    DataMappingComponent
+    DataMappingComponent,
+    DataPreviewComponent
   ],
   imports: [
     BrowserModule,

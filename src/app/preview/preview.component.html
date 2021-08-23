@@ -1,21 +1,15 @@
-<mat-card class="example-card" class="mat-elevation-z3">
-  <mat-card-header>
-    <mat-card-title>Imported CSV</mat-card-title>
-    <mat-card-subtitle>First 10 rows</mat-card-subtitle>
-  </mat-card-header>
-  <hr>
-  <mat-card-content fxLayout="column" fxLayoutAlign="center stretch">
-    <table mat-table [dataSource]="data.slice(0, 10)" class="mat-elevation-z0">
-      <ng-container
-        [matColumnDef]="column"
-        *ngFor="let column of columnHeaders"
-      >
-        <th mat-header-cell *matHeaderCellDef>{{ column }}</th>
-        <td mat-cell *matCellDef="let element">{{ element[column] }}</td>
-      </ng-container>
+<div fxLayout="column" fxLayoutAlign="center stretch">
+  <app-data-mapping
+    fxFlexOffset="2"
+    [ynabHeaders]="getYnabColumnHeaders()"
+    [data]="data"
+    [columnHeaders]="columnHeaders"
+    (mappingChanged)="mapYnabCol($event)"
+  ></app-data-mapping>
 
-      <tr mat-header-row *matHeaderRowDef="columnHeaders"></tr>
-      <tr mat-row *matRowDef="let row; columns: columnHeaders"></tr>
-    </table>
-  </mat-card-content>
-</mat-card>
+  <app-data-preview
+    fxFlexOffset="3"
+    [data]="data"
+    [columnHeaders]="columnHeaders"
+  ></app-data-preview>
+</div>
